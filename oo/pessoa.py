@@ -1,6 +1,6 @@
 class Pessoa:
 
-    def cumprimentar (self):
+    def cumprimentar (self): #metodo cumprimentar
         return 'Ola'
 
 if __name__ == '__main__':
