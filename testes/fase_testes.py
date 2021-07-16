@@ -19,7 +19,7 @@ from atores import (Obstaculo, Porco, PassaroVermelho, PassaroAmarelo,
 from fase import Fase, Ponto, EM_ANDAMENTO, VITORIA, DERROTA
 
 
-class AtorFake:
+class AtorFake:                                         #criado para testar um Ator
     def __init__(self, x=0, y=0):
         self.y = y
         self.x = x
@@ -102,18 +102,18 @@ class FaseTestes(TestCase):
 
     def teste_acabou_sem_porcos(self):
         fase = Fase()
-        self.assertEqual(VITORIA, fase.status())
+        self.assertEqual(VITORIA, fase.status())            #sem Porco ativo, deve retornar Vitoria
 
     def teste_acabou_com_porcos_e_passaros(self):
         fase = Fase()
-        porcos = [PorcoFake(1, 1) for _ in range(2)]  # criando 2 porcos
-        passaros = [PassaroFake(1, 1) for _ in range(2)]  # criando 2 pássaros
+        porcos = [PorcoFake(1, 1) for _ in range(2)]        # criando 2 porcos
+        passaros = [PassaroFake(1, 1) for _ in range(2)]    # criando 2 pássaros
         fase.adicionar_porco(*porcos)
         fase.adicionar_passaro(*passaros)
 
         self.assertEqual(EM_ANDAMENTO, fase.status())
 
-        for ator in porcos + passaros:
+        for ator in porcos + passaros:          #iterar em dus listas concatenadas
             ator.status = DESTRUIDO
         self.assertEqual(VITORIA, fase.status())
 
@@ -165,9 +165,9 @@ class FaseTestes(TestCase):
                          'Sem porco ativo, o jogo deveria acabar com vitória')
 
     def teste_lancar_passaro_sem_erro_quando_nao_existe_passaro(self):
-        passaros = [PassaroFake(1, 1) for _ in range(2)]
-        fase = Fase()
-        fase.adicionar_passaro(*passaros)
+        passaros = [PassaroFake(1, 1) for _ in range(2)]        #cria 2 passaros
+        fase = Fase()                                           #cria uma fase
+        fase.adicionar_passaro(*passaros)                       #adiciona os 2 passaros na fase
         self.assertFalse(passaros[0].foi_lancado())
         self.assertFalse(passaros[1].foi_lancado())
         fase.lancar(90, 1)
@@ -184,11 +184,11 @@ class FaseTestes(TestCase):
         Método que testa se o intervalo de colisão da Fase é repassado aos
         atores. Padrão de intervalo é 1
         '''
-        fase = Fase()
-        passaro = PassaroFake(1, 1)
-        fase.adicionar_passaro(passaro)
-        porco = PorcoFake(2, 2)
-        fase.adicionar_porco(porco)
+        fase = Fase()                                           #fase eh criada
+        passaro = PassaroFake(1, 1)                             #passaro na posicao x=1,y=1 eh criado
+        fase.adicionar_passaro(passaro)                         #passaro adicionado a fase
+        porco = PorcoFake(2, 2)                                 #porco na posicao x=2,y=2 eh criado
+        fase.adicionar_porco(porco)                             #porco eh adicionado a fase
         fase.calcular_pontos(0)
         self.assertTrue(passaro.colidir_executado)
         self.assertTrue(porco.colidir_executado)

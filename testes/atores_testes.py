@@ -17,9 +17,9 @@ class AtorTestes(TestCase):
     def teste_valores_padrao(self):
         'Testa valores iniciais padrão de um Ator'
         ator = Ator()
-        self.assertEqual(0, ator.x)
-        self.assertEqual(0, ator.y)
-        self.assertEqual(ATIVO, ator.status)
+        self.assertEqual(0, ator.x)                     #coordenada X de um ator
+        self.assertEqual(0, ator.y)                     #coordenada Y de um ator
+        self.assertEqual(ATIVO, ator.status)            #status inicial de um ator
         self.assertEqual('A', ator.caracter())
 
     def teste_valores_passados_por_parametro(self):
@@ -113,7 +113,7 @@ class AtorTestes(TestCase):
     def assert_colisao_atores_ativos(self, ator, ator2, intervalo=1):
         """
         Se certifica que há colisão entre atores ativos
-        Atenção: Esse não é método de teste porque nao se inicia com prefixo "text".
+        Atenção: Esse não é método de teste porque nao se inicia com prefixo "test".
         Ele serve apenas para encapsular toda lógica de teste de colisão entre dois atores ativos
         """
         # Conferindo status dos dois atores antes da colisão
@@ -168,7 +168,7 @@ class PorcoTestes(TestCase):
 
 class PassaroBaseTests(TestCase):
     """
-    Classe base para teste de passaros.
+    Classe base para teste de passaros. Esta Classe serve tanto para PASSAROS VERMELHOS quanto AMARELOS
     Essa classe não contèm nenhum teste, serve apenas para encapsular a lógica de asserção de posição de passaros
     vermelhos e também dos amarelos.
 
@@ -176,7 +176,7 @@ class PassaroBaseTests(TestCase):
 
     def assert_passaro_posicao(self, x_esperado, y_esperado, status_esperado, passaro, tempo):
         """
-        Método que se testa posição do pássaro.
+        Método que se testa posição do pássaro, tanto os vermelhos quanto os amarelos
         Atenção: Esse não é um método de teste porque não se inicia com prefixo "test".
         :param x_esperado: posição x esperada do passaro
         :param y_esperado: posição y esperada do passaro
@@ -209,7 +209,7 @@ class PassaroVermelhoTests(PassaroBaseTests):
 
     def teste_foi_lancado(self):
         """
-        Teste de lançamento. Enquanto o método lançar do passaro não for chamado, o méotodo foi_lancado deve retornar
+        Teste de lançamento. Enquanto o método lançar do passaro não for chamado, o método foi_lancado deve retornar
         Falso
         :return:
         """
@@ -262,7 +262,7 @@ class PassaroAmareloTests(PassaroBaseTests):
         Tests de lançamento vertical. Nele, o passaro só se move verticalmente e sua posição y se matém contanstante
         :return:
         """
-        passaro_amarelo = PassaroAmarelo(1, 1)
+        passaro_amarelo = PassaroAmarelo(1, 1)              #criacao de 1 passaro amarelo
         passaro_amarelo.lancar(90, 2)  # passaro lancado a 90 graus no tempo 2 segundos
 
 
