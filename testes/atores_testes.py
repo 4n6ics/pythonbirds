@@ -113,8 +113,8 @@ class AtorTestes(TestCase):
     def assert_colisao_atores_ativos(self, ator, ator2, intervalo=1):
         """
         Se certifica que há colisão entre atores ativos
-        Atenção: Esse não é método de teste porque nao se inicia com prefixo "test".
-        Ele serve apenas para encapsular toda lógica de teste de colisão entre dois atores ativos
+        Atenção: Esse não é método de margingTrading porque nao se inicia com prefixo "test".
+        Ele serve apenas para encapsular toda lógica de margingTrading de colisão entre dois atores ativos
         """
         # Conferindo status dos dois atores antes da colisão
         self.assertEqual(ator.status, ATIVO, 'Status deveria ser ativo antes da colisão')
@@ -127,7 +127,7 @@ class AtorTestes(TestCase):
     def assert_nao_colisao(self, ator, ator2):
         """
         Se certifica que não colisão entre dois atores
-        Atenção: Esse não é método de teste porque nao se inicia com prefixo "text".
+        Atenção: Esse não é método de margingTrading porque nao se inicia com prefixo "text".
         Ele apenas encapsula a lógica de não colisão entre dois atores.
         So seja, eles deve manter seus respectivos status mesmo depois da chamada do metodo colidir
         """
@@ -168,8 +168,8 @@ class PorcoTestes(TestCase):
 
 class PassaroBaseTests(TestCase):
     """
-    Classe base para teste de passaros. Esta Classe serve tanto para PASSAROS VERMELHOS quanto AMARELOS
-    Essa classe não contèm nenhum teste, serve apenas para encapsular a lógica de asserção de posição de passaros
+    Classe base para margingTrading de passaros. Esta Classe serve tanto para PASSAROS VERMELHOS quanto AMARELOS
+    Essa classe não contèm nenhum margingTrading, serve apenas para encapsular a lógica de asserção de posição de passaros
     vermelhos e também dos amarelos.
 
     """
@@ -177,11 +177,11 @@ class PassaroBaseTests(TestCase):
     def assert_passaro_posicao(self, x_esperado, y_esperado, status_esperado, passaro, tempo):
         """
         Método que se testa posição do pássaro, tanto os vermelhos quanto os amarelos
-        Atenção: Esse não é um método de teste porque não se inicia com prefixo "test".
+        Atenção: Esse não é um método de margingTrading porque não se inicia com prefixo "test".
         :param x_esperado: posição x esperada do passaro
         :param y_esperado: posição y esperada do passaro
         :param status_esperado: status esperado do passaro
-        :param passaro: passaro alvo do teste
+        :param passaro: passaro alvo do margingTrading
         :param tempo: tempo do jogo
         """
         x_calculado, y_calculado = passaro.calcular_posicao(tempo)
@@ -192,7 +192,7 @@ class PassaroBaseTests(TestCase):
 
 class PassaroVermelhoTests(PassaroBaseTests):
     """
-    Classe de teste e Passaro Vermelho
+    Classe de margingTrading e Passaro Vermelho
     """
 
     def teste_status(self):
@@ -754,7 +754,7 @@ class PassaroAmareloTests(PassaroBaseTests):
     def assert_posicao_vertical(self, y, tempo, passaro):
         """
          Método auxiliar que mantém x fixo com valor 1, status Ativo, variando apenas o tempo e a posição y
-         Atenção, esse não é um teste porque não começa com prefixo "test"
+         Atenção, esse não é um margingTrading porque não começa com prefixo "test"
          """
         self.assert_passaro_posicao(1, y, ATIVO, passaro, tempo)
 
